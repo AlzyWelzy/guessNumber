@@ -20,7 +20,7 @@ checkButton.addEventListener('click', () => {
   if (!guessValue) {
     displayMessage('⛔️ No number!');
   } else if (guessValue === secretNumber) {
-    displayMessage('HORRAY! YOU GUESSED IT RIGHT!');
+    displayMessage('HORRAY! YOU GUESSED IT RIGHT BUDDY!');
 
     number.textContent = secretNumber;
     body.style.backgroundColor = '#60b347';
