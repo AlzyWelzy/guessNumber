@@ -3,15 +3,18 @@
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
+const win = 'HORRAY! YOU GUESSED IT RIGHT!';
+const lose = 'YOU LOST THE GAME!';
 const body = document.querySelector('body');
 const guess = document.querySelector('.guess');
 const number = document.querySelector('.number');
 const scoreElement = document.querySelector('.score');
 const checkButton = document.querySelector('.check');
 const againButton = document.querySelector('.again');
+const messageUser = document.querySelector('.message');
+const highscoreUser = document.querySelector('.highscore');
 
-const displayMessage = message =>
-  (document.querySelector('.message').textContent = message);
+const displayMessage = message => (messageUser.textContent = message);
 
 checkButton.addEventListener('click', () => {
   const guessValue = Number(guess.value);
@@ -20,7 +23,7 @@ checkButton.addEventListener('click', () => {
   if (!guessValue) {
     displayMessage('⛔️ No number!');
   } else if (guessValue === secretNumber) {
-    displayMessage('HORRAY! YOU GUESSED IT RIGHT BUDDY!');
+    displayMessage(win);
 
     number.textContent = secretNumber;
     body.style.backgroundColor = '#60b347';
@@ -28,7 +31,7 @@ checkButton.addEventListener('click', () => {
 
     if (score > highscore) {
       highscore = score;
-      document.querySelector('.highscore').textContent = highscore;
+      highscoreUser.textContent = highscore;
     }
   } else if (guessValue !== secretNumber) {
     if (score > 1) {
@@ -36,7 +39,7 @@ checkButton.addEventListener('click', () => {
       score--;
       scoreElement.textContent = score;
     } else {
-      displayMessage('You lost the game');
+      displayMessage(lose);
       scoreElement.textContent = 0;
     }
   }
